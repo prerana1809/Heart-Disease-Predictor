@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Disease Predictor</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href={{ url_for('static', filename='../static/nicepage.css') }} media="screen">
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/Home.css') }}"> 
+      <script class="u-script" type="text/javascript" src={{ url_for('static', filename='../static/jquery.js') }} defer=""></script>
+      <script class="u-script" type="text/javascript" src={{ url_for('static', filename='../static/nicepage.js') }} defer=""></script>
+</head>
+
+<body>
+
+  <!-- Website Title 
+
+  <div class="container">
+    <h2 class='container-heading'><span class="heading_font">Heart Disease Predictor</span></h2>
+    <div class='description'>
+       <p>A Machine Learning Web Application that predicits chances of having heart Disease or not, Built with Flask and Deployed using Heroku.</p><br>
+        <p>(Note:This model is 82.67% accurate)</p> 
+    </div>
+  </div>-->
+  <div style="display:inline-block;vertical-align:top;">
+    <lord-icon
+        src="https://cdn.lordicon.com/yrixyrst.json"
+        trigger="mouse"
+        style="width:150px;height:150px">
+    </lord-icon></div>
+    <div style="display:inline-block;"><h1 style="vertical-align: middle;">MyHeartScore</h1>
+    <p>
+      Heart Disease Prediction Model with interactive UI and information made fun!
+    </p></div> 
+  <header class="u-clearfix u-header u-header" id="sec-7f32"><div class="u-clearfix u-sheet u-sheet-1">
+      <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+          <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+            <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+            <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</g></svg>
+          </a>
+          <script src="https://cdn.lordicon.com/ritcuqlt.js"></script><div style="display:inline-block;vertical-align:top;">
+            <lord-icon
+                src="https://cdn.lordicon.com/yrixyrst.json"
+                trigger="hover"
+                style="width:150px;height:150px">
+            </lord-icon></div>
+            <div style="display:inline-block;"><h1 style="vertical-align: middle;">MyHeartScore</h1>
+            <p>
+              Heart Disease Prediction Model with interactive UI and information made fun!
+            </p></div> 
+        </div>
+        <div class="u-nav-container">
+          <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="{{ url_for('home')}}" style="padding: 10px 20px;">Home</a>
+          </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url_for('test')}}">Take a Test</a>
+          </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{ url_for('info')}}">Information</a>
+</li></ul>
+        </div>
+        <div class="u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-inner-container-layout u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Home.html">Home</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Take-a-Test.html">Take a Test</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="Information.html">Information</a>
+</li></ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+    </div></header>
+
+  <!-- Text Area -->
+  <div class="ml-container">
+    <form action="{{ url_for('predict')}}" method="POST"> 
+
+      
+      <script>
+        // When the user clicks on div, open the popup
+        function myFunction() {
+          var popup = document.getElementById("myPopup");
+          popup.classList.toggle("show");
+        }</script>
+      
+      
+      <label for="sex">Sex</label>
+      <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+        <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+      <select id="sex" name="sex">
+        <option selected>----select option----</option>
+        <option value="1">Male</option>
+        <option value="0">Female</option>
+      </select><br>
+      
+      <label for="age">Age</label>
+      <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+        <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+      <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+        <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+      <input type="text" id="age" name="age" placeholder="Your age.."><br>
+
+      <!--1: less than high school
+          2: high school grads
+          3: college grads
+          4: post-college grads.-->
+
+      <label for="education">Education</label>
+      <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+        <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+      <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+        <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <select id="education" name="education">
+          <option selected>----select option----</option>
+          <option value="1">Less than high school</option>
+          <option value="2">High school grads</option>
+          <option value="3">College grads</option>
+          <option value="4">Post college grad</option>
+
+          
+        </select><br>
+
+
+
+        <label for="smoker">Smoker</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <select id="smoker" name="smoker">
+          <option selected>----select option----</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+          
+        </select><br>
+
+
+
+        <label for="cpd">Cigarettes per day</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <input type="text" id="cpd" name="cpd" placeholder="The number of Cigarettes you smoke ( 0 if None)"><br>
+
+        <label for="bpm">Bp meds</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <select id="bpm" name="bpm">
+          <option selected>----select option----</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+          
+        </select><br>
+          
+        <label for="prevalentStroke">Prevalent stroke</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <select id="prevalentStroke" name="prevalentStroke">
+          <option selected>----select option----</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+          
+        </select><br>
+
+        <label for="prevalentHyperextention">Prevalent Hyperextention</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <select id="prevalentHyperextention" name="prevalentHyperextention">
+          <option selected>----select option----</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+          
+        </select><br>
+        <label for="diabetes">Diabetes</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <select id="diabetes" name="diabetes">
+          <option selected>----select option----</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+          
+        </select><br>
+
+        <label for="chol">Cholesterol</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <input type="text" id="chol" name="chol" placeholder="A number in range [126-564] mg/dl"><br>
+
+        <label for="sysBP">Systolic Blood Pressure</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <input type="text" id="sysBP" name="sysBP" placeholder="A number in range [50-200] mm Hg"><br>
+
+        <label for="diaBP">Diastolic Blood Pressure</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <input type="text" id="diaBP" name="diaBP" placeholder="A number in range [50-200] mm Hg"><br>
+
+        <label for="BMI">Body Mass Index(BMI)</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <input type="text" id="BMI" name="BMI" placeholder="A number in range [5-45] "><br>
+
+        <label for="HR">Heart Rate</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <input type="text" id="HR" name="HR" placeholder="A number in range [40-200] "><br>
+
+        <label for="glucose">Blood Glucose Level</label>
+        <div class="popup" onclick="myFunction()"><img src="{{ url_for('static', filename='info.jpeg') }}" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <div class="popup" onclick="myFunction()"><img src="info.jpeg" style="height: 20px;" alt="">
+          <span class="popuptext" id="myPopup">A Simple Popup!</span></div>
+        <input type="text" id="glucose" name="glucose" placeholder="A number in range [60-200] "><br>
+
+
+
+        
+      
+
+      <input type="submit" class="my-cta-button" value="Predict">
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div class='footer'>
+    
+    
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Heart Disease Predictor</title>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='diabetes-favicon.ico') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+		<script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href={{ url_for('static', filename='../static/nicepage.css') }} media="screen">
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/Home.css') }}"> 
+	</head>
+
+    <body>
+
+        <!-- Website Title -->
+		<div class="container">
+            <h2 class='container-heading'><span class="heading_font">Heart Disease Predictor</span></h2>
+            
+    	</div>
+
+		<!-- Result -->
+		<script>
+			
+		</script>
+		<div class="results">
+			{% if prediction[0][1]>=0.3  and prediction[0][1]<0.6 %}
+					<h1>Prediction: <span class='medium'>You have {{prediction[0][1]*100}} chances have Heart Disease</span></h1>
+					<p>
+						Not bad... but there still is a moderate risk of getting heart disease in the next 10 years...<br>
+						here's what you could do about it:<br>
+						1. Control blood pressure and cholesterol levels<br>
+						2. Limit alcohol consumption<br>
+						3. Maintain a healthy weight<br>
+						4. Quit smoking<br>
+						5. Limit alcohol<br>
+						7. Manage stress<br>
+						8. Get enough sleep<br>
+						9. Get regular check-ups<br>
+						10. Eat a heart-healthy diet</p>
+
+				
+			{% elif prediction[0][1]<0.3 %}
+				<h1>Prediction: <span class='safe'>Great! You have {{prediction[0][1]*100}} chances have Heart Disease <br>.</span></h1>
+				<p>Good going! You are healthy. Here are some tips to help prevent heart disease:<br>
+					1. Eat a healthy diet<br>
+					2. Exercise regularly<br>
+					3. Maintain a healthy weight<br>
+					4. Quit smoking<br>
+					5. Limit alcohol<br>
+					6. Manage stress and get enough sleep<br>
+					And lastly, get regular check-ups!</p><br>
+			{% elif prediction[0][1]>=0.6  %}
+				<h1>Prediction: <span class='danger'>You have {{prediction[0][1]*100}} chances have Heart Disease </span></h1>
+				<p>
+					ALERT!!<br>
+					1. manage your cholestrol levels as high cholestrol levels can increase the buildup of plaque in your arteries and can lead to heart attack<br>
+					2. maintain a healthy weight and keep an eye on your BMI index as being overweight or obese can put extra stress on your arteries.<br>
+					3.Control your blood pressure: High blood pressure can put a strain on your heart and increase your risk of heart attack<br>
+					4.stay in touch with your dotor talk about the ways of to lower your blood pressure,such as medication, lifestyle changes, or a combination of both.<br></p>
+				
+			{% endif %}
+			
+		</div>
+
+		<!-- Footer -->
+		<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-eecc"><div class="u-clearfix u-sheet u-sheet-1">
+			<p>&copy; 2023 Cardiovascular Disease Awareness<br>
+			CTRL+ALT+DEFEAT<br>
+		  Credits:<br>
+		Pannag Kumaar<br>Prajwal V Shenoy<br>Prerana M<br>Shivani S</p>      </div></footer>
